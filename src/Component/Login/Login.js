@@ -1,7 +1,21 @@
-import imglogin from '../../Asset/Images/image.png'
+import { useState } from 'react';
+import imglogin from '../../Asset/Images/imglogin.jpg'
 
 
-function Login() {
+function Login () {
+
+  const [email,setEmail] = useState('');
+  const [pass,setPass] = useState('');
+  const [error,setError] = useState('');
+  const [success,setSuccess] = useState('');
+
+  const handlesumbit = (e) => {
+    e.preventDefault();
+    setError('')
+    setSuccess('');
+  
+  }
+
   return (
     <section className="vh-100" style={{ backgroundColor: "rgb(216 216 216)" }}>
       <div className="container py-5 h-100">
@@ -19,7 +33,7 @@ function Login() {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
-                    <form>
+                    <form onsumbit={handlesumbit}>
                       <div className="d-flex align-items-center mb-3 pb-1">
                         {/* <i
                           className="fas fa-cubes fa-2x me-3"
@@ -39,6 +53,7 @@ function Login() {
                           id="form2Example17"
                           className="form-control form-control-lg"
                           placeholder='Email'
+                          onKeyUp={(e)=> setEmail(e.target.preventDefault)}
                         />
                         {/* <label className="form-label" htmlFor="form2Example17">
                           Email address
@@ -50,13 +65,15 @@ function Login() {
                           id="form2Example27"
                           className="form-control form-control-lg"
                           placeholder='Password'
+                          onKeyUp={(e)=> setPass(e.target.preventDefault)}
+                          
                         />
                         {/* <label className="form-label" htmlFor="form2Example27">
                           Password
                         </label> */}
                       </div>
                       <div className="pt-1 mb-4">
-                        <button
+                     <button
                           className="btn btn-dark btn-lg btn-block"
                           type="button"
                         >
